@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>My Store</title>
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+                <div class="header__logo roboto_bold">e-shop</div>
+                <form class="header__search-form" action="#" @submit.prevent="filter()">
+                    <input class="header__search" type="text" v-model="userSearch">
+                    <button class="header__search-btn" type="submit">
+                        <!-- вызываем метот через @submit=""тут указываем название метода" -->
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                <button class="header__btn-cart roboto_bold" type="button">корзина</button>
+            <div class="active-basket header__cart roboto_light"></div>
+        </header>
+        <main>
+            <div class="product roboto_light">
+                <div class="product-item" v-for="item of filterProducts">
+                    <img class="product-item__img" :src="imgCatalog" alt="#" height="100">
+                    <h3 class="product-item__title">{{ item.product_name }}</h3>
+                    <p class="product-item__price">{{ item.price }}</p>
+                    <button class="product-item__btn-buy" @click="addProduct(product)">купить</button>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <!-- тут ничего нет -->
+        </footer>
+        <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+        <script src="js/main-vue.js"></script>
+    </div>
+</body>
+</html>
