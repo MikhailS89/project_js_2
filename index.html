@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>My Store</title>
+</head>
+<body>
+    <div class="conteiner" id="app">
+        <header class="header">
+                <div class="header__logo roboto_bold">e-shop</div>
+                
+                <!-- <form class="header__search-form" action="#" @submit.prevent="filter()">
+                    <input class="header__search" type="text" v-model="userSearch">
+                    <button class="header__search-btn" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form> -->
+
+                <div class="header__nav nav roboto_bold">
+                    <ul class="header__nav-list">
+                        <li class="header__nav-item">
+                            <a class="header__nav-link" href="#">главная</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a class="header__nav-link" href="#">продукты</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a class="header__nav-link" href="#">контакты</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <vfilter v-model="userSearch" @sub="onFilter"></vfilter>
+
+                <button class="header__btn-cart roboto_bold" type="button" @click.prevent='show = !show'>корзина</button>
+
+                <cart @remove="removeProduct"></cart>
+
+                <!-- <div class="active-basket header__cart roboto_light" v-show='show'> -->
+                    <!-- <p v-if="!basket.length">корзина пуста</p> -->
+                    <!-- <div class="header__cart-lot" v-for="item of basket">
+                        <img class="header__cart-lot-img" :src="imgCatalog" alt="#" height="50">
+                        <p class="header__cart-lot-product">{{ item.product_name }}</p>
+                        <p class="header__cart-lot-cost">{{ item.price * item.quantity }}</p>
+                        <p class="header__cart-lot-quantity">{{ item.quantity }}</p>
+                        <span class="header__cart-lot-plus" @click="removeProduct(item)">+</span>
+                    </div> -->
+                <!-- </div> -->
+        </header>
+        <main class="main">
+            <div>
+                <Verror v-if="error">error send request</Verror>
+
+                <!-- <div class="main__error">
+                    <p class="main__text roboto_bold">ZHOPA2</p>
+                </div> -->
+            </div>
+            <!-- <Product :product='filterProducts[0]' :src="imgCatalog" ></Product> -->
+            <!-- <Product :product='{ "id_product": 123, "product_name": "Ноутбук", "price": 45600 }' :src="imgCatalog" ></Product> -->
+            <Prods :list="filterProducts" :src="imgCatalog" @add="addProduct"></Prods>
+            <!-- <div class="product roboto_light">
+                <div class="product-item" v-for="item of filterProducts">
+                    <img class="product-item__img" :src="imgCatalog" alt="#" height="100">
+                    <h3 class="product-item__title">{{ item.product_name }}</h3>
+                    <p class="product-item__price">{{ item.price }}</p>
+                    <button class="product-item__btn-buy" @click="addProduct(item)">купить</button>
+                </div>
+            </div> -->
+        </main>
+        <footer class="footer">
+            <div class="footer__wpr roboto_bold">
+                <ul class="footer__list">
+                    <li class="footer__item footer__item--excretion">контакты:</li>
+                    <li>г. Симбирск, ул. Герасимова 10А</li>
+                    <li>Тел.: +7-900-000-00-00</li>
+                    <li>mail: todolist@mail.ru</li>
+                </ul>
+            </div>
+        </footer>
+        <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+        <script src="js/ProductComponent.js"></script>
+        <script src="js/CartComponent.js"></script>
+        <script src="js/FilterComponent.js"></script>
+        <script src="js/ErrorComponent.js"></script>
+        <script src="js/main-vue.js"></script>
+    </div>
+</body>
+</html>
